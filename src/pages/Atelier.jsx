@@ -8,8 +8,626 @@ import { useNavigate } from "react-router-dom";
 import slide from "../assets/Musiques/slide.mp3";
 import click from "../assets/Musiques/hover.mp3";
 import confirm from "../assets/Musiques/valid2.mp3";
+import lightClick from "../assets/Musiques/lightClick.mp3";
+import BookModal from "../components/BookModal";
+import pickUp from "../assets/Musiques/paper.mp3";
+
+// DRAWINGS :
+
+import AliceConcours from "../assets/Images/Drawings/AliceConcours.png";
+import Alicelabest from "../assets/Images/Drawings/Alicelabest.png";
+import AliGao from "../assets/Images/Drawings/AliGao.png";
+import AnaelCommi4 from "../assets/Images/Drawings/AnaelCommi4.png";
+import annivdjak from "../assets/Images/Drawings/annivdjak.png";
+import AnnivHugo2 from "../assets/Images/Drawings/AnnivHugo2.png";
+import BeachTime from "../assets/Images/Drawings/BeachTime.png";
+import BeachYeee from "../assets/Images/Drawings/BeachYeee.png";
+import Clouds from "../assets/Images/Drawings/Clouds.png";
+import DessinFlorian from "../assets/Images/Drawings/DessinFlorian.png";
+import FloDessinYipee from "../assets/Images/Drawings/FloDessinYipee.png";
+import FRINWOO from "../assets/Images/Drawings/FRINWOO.png";
+import HamideDessin from "../assets/Images/Drawings/HamideDessin.png";
+import LesCoupainsBlue from "../assets/Images/Drawings/LesCoupainsBlue.png";
+import LucielAnniv from "../assets/Images/Drawings/LucielAnniv.png";
+import Manipulation from "../assets/Images/Drawings/Manipulation.png";
+import Ocean from "../assets/Images/Drawings/ocean.png";
+import PapyAot from "../assets/Images/Drawings/Papy-Aot.png";
+import PassingTime from "../assets/Images/Drawings/PassingTime.png";
+import SUMMERTIME from "../assets/Images/Drawings/SUMMERTIME.png";
+import TheMeeting from "../assets/Images/Drawings/TheMeeting.png";
+import VincentRaccoons from "../assets/Images/Drawings/VincentRaccoons.png";
+import Yukoc from "../assets/Images/Drawings/Yukoc.png";
+import YuyuHopper2 from "../assets/Images/Drawings/YuyuHopper2.png";
+import YuyuOctimed from "../assets/Images/Drawings/YuyuOctimed.png";
+
+// SKETCHES :
+
+import AliceCroquis from "../assets/Images/Sketches/AliceCroquis.png";
+import AlicelabestCroquis from "../assets/Images/Sketches/AlicelabestCroquis.png";
+import AnnivHugoCroquis from "../assets/Images/Sketches/AnnivHugoCroquis.png";
+import croquisrapido3 from "../assets/Images/Sketches/croquisrapido3.png";
+import croquisrapido5 from "../assets/Images/Sketches/croquisrapido5.png";
+import croquisrapido8 from "../assets/Images/Sketches/croquisrapido8.png";
+import croquisrapido10 from "../assets/Images/Sketches/croquisrapido10.png";
+import GeorgeHunterSk from "../assets/Images/Sketches/George HunterSk.png";
+import HimaFanartcroquis from "../assets/Images/Sketches/Hima Fanart croquis.png";
+import Rainbowcroquis from "../assets/Images/Sketches/Rainbowcroquis.png";
+import YuyuHopper from "../assets/Images/Sketches/YuyuHopper.png";
+import yuyuhoppersketch from "../assets/Images/Sketches/yuyuhoppersketch.png";
+
+// ANIMATIONS :
+
+import AliceSmileLight from "../assets/Images/Animations/AliceSmileLight.gif";
+import axetestblackbg from "../assets/Images/Animations/axetestblackbg.gif";
+import BillieToppy from "../assets/Images/Animations/BillieToppy.mp4";
+import Landscape from "../assets/Images/Animations/Landscape.gif";
+import LandscapeNight from "../assets/Images/Animations/LandscapeNight.gif";
+import MirrorFinished from "../assets/Images/Animations/MirrorFinished.mp4";
+import picturesketchwip from "../assets/Images/Animations/picturesketchwip.mp4";
+import Shock from "../assets/Images/Animations/Shock.gif";
+import StartingScreencolored from "../assets/Images/Animations/StartingScreencolored.mp4";
 
 export default function Atelier() {
+  const videoRef = useRef(null);
+  const [bookOpen, setBookOpen] = useState(false);
+  const [zoomImage, setZoomImage] = useState(null);
+
+  const pickUpSound = () => {
+    const audio = new Audio(pickUp);
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+  };
+
+  const booksByCanvas = [
+    // DRAWINGS
+    [
+      {
+        left: (
+          <img
+            src={AliceConcours}
+            alt="AliceConcours"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AliceConcours);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={Alicelabest}
+            alt="Alicelabest"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Alicelabest);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={AliGao}
+            alt="AliGao"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AliGao);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={AnaelCommi4}
+            alt="AnaelCommi4"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AnaelCommi4);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={annivdjak}
+            alt="annivdjak"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(annivdjak);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={AnnivHugo2}
+            alt="AnnivHugo2"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AnnivHugo2);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={BeachTime}
+            alt="BeachTime"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(BeachTime);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={BeachYeee}
+            alt="BeachYeee"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(BeachYeee);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={Clouds}
+            alt="Clouds"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Clouds);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={DessinFlorian}
+            alt="DessinFlorian"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(DessinFlorian);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={FloDessinYipee}
+            alt="FloDessinYipee"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(FloDessinYipee);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={FRINWOO}
+            alt="FRINWOO"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(FRINWOO);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={HamideDessin}
+            alt="HamideDessin"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(HamideDessin);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={LesCoupainsBlue}
+            alt="LesCoupainsBlue"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(LesCoupainsBlue);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={LucielAnniv}
+            alt="LucielAnniv"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(LucielAnniv);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={Manipulation}
+            alt="Manipulation"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Manipulation);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={Ocean}
+            alt="Ocean"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Ocean);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={PapyAot}
+            alt="PapyAot"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(PapyAot);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={PassingTime}
+            alt="PassingTime"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(PassingTime);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={SUMMERTIME}
+            alt="SUMMERTIME"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(SUMMERTIME);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={TheMeeting}
+            alt="TheMeeting"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(TheMeeting);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={VincentRaccoons}
+            alt="VincentRaccoons"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(VincentRaccoons);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={Yukoc}
+            alt="Yukoc"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Yukoc);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={YuyuHopper2}
+            alt="YuyuHopper2"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YuyuHopper2);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={YuyuOctimed}
+            alt="YuyuOctimed"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YuyuOctimed);
+            }}
+          />
+        ),
+        right: null,
+      },
+    ],
+
+    // SKETCHES
+    [
+      {
+        left: (
+          <img
+            src={AliceCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AliceCroquis);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={AlicelabestCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AlicelabestCroquis);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={AnnivHugoCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AnnivHugoCroquis);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={croquisrapido3}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(croquisrapido3);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={croquisrapido5}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(croquisrapido5);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={croquisrapido8}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(croquisrapido8);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={croquisrapido10}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(croquisrapido10);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={GeorgeHunterSk}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(GeorgeHunterSk);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={HimaFanartcroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(HimaFanartcroquis);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={Rainbowcroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Rainbowcroquis);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={YuyuHopper}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YuyuHopper);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={yuyuhoppersketch}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(yuyuhoppersketch);
+            }}
+          />
+        ),
+      },
+    ],
+
+    // ANIMATIONS
+    [
+      {
+        left: (
+          <img
+            src={AliceSmileLight}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AliceSmileLight);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={axetestblackbg}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(axetestblackbg);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <video className="picture" controls loop>
+            <source src={BillieToppy} type="video/mp4" />
+          </video>
+        ),
+        right: (
+          <img
+            src={Landscape}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Landscape);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={LandscapeNight}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(LandscapeNight);
+            }}
+          />
+        ),
+        right: (
+          <video className="picture" controls loop>
+            <source src={MirrorFinished} type="video/mp4" />
+          </video>
+        ),
+      },
+
+      {
+        left: (
+          <video className="picture" controls loop>
+            <source src={picturesketchwip} type="video/mp4" />
+          </video>
+        ),
+        right: (
+          <img
+            src={Shock}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Shock);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <video className="picture" controls loop>
+            <source src={StartingScreencolored} type="video/mp4" />
+          </video>
+        ),
+        right: null,
+      },
+    ],
+  ];
+
   const navigate = useNavigate();
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(false);
@@ -53,6 +671,12 @@ export default function Atelier() {
     setMuted(!muted);
   };
 
+  const playLightClick = () => {
+    const audio = new Audio(lightClick);
+    audio.volume = 0.4;
+    audio.play().catch(() => {});
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
     audio.volume = 0.4;
@@ -77,7 +701,13 @@ export default function Atelier() {
         ←
       </button>
       <audio ref={audioRef} src={music} />
-      <button className="sound-button" onClick={toggleSound}>
+      <button
+        className="sound-button"
+        onClick={() => {
+          toggleSound();
+          playLightClick();
+        }}
+      >
         <img src={muted ? noSoundIcon : soundIcon} alt="sound toggle" />
       </button>
       <button className="left-button" onClick={prevCanvas}>
@@ -89,11 +719,27 @@ export default function Atelier() {
 
       <button
         className="see-button"
-        onClick={seeBtn}
+        onClick={() => {
+          setBookOpen(true);
+          seeBtn();
+        }}
         onMouseEnter={playHoverSound}
       >
         Voir
       </button>
+
+      <BookModal
+        key={canvasIndex}
+        isOpen={bookOpen}
+        onClose={() => setBookOpen(false)}
+        pages={booksByCanvas[canvasIndex]}
+      />
+
+      {zoomImage && (
+        <div className="image-zoom-overlay" onClick={() => setZoomImage(null)}>
+          <img src={zoomImage} className="image-zoomed" />
+        </div>
+      )}
     </div>
   );
 }

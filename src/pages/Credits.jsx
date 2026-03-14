@@ -5,6 +5,7 @@ import noSoundIcon from "../assets/Images/Nosound.png";
 import "./Page.css";
 import CreditsBackground from "../components/CreditsBackground";
 import { useNavigate } from "react-router-dom";
+import lightClick from "../assets/Musiques/lightClick.mp3";
 
 export default function Atelier() {
   const navigate = useNavigate();
@@ -15,6 +16,12 @@ export default function Atelier() {
     const audio = audioRef.current;
     audio.muted = !muted;
     setMuted(!muted);
+  };
+
+  const playLightClick = () => {
+    const audio = new Audio(lightClick);
+    audio.volume = 0.4;
+    audio.play().catch(() => {});
   };
 
   useEffect(() => {
@@ -41,7 +48,13 @@ export default function Atelier() {
         ←
       </button>
       <audio ref={audioRef} src={music} />
-      <button className="sound-button" onClick={toggleSound}>
+      <button
+        className="sound-button"
+        onClick={() => {
+          toggleSound();
+          playLightClick();
+        }}
+      >
         <img src={muted ? noSoundIcon : soundIcon} alt="sound toggle" />
       </button>
     </div>
