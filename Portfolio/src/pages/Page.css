@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+  font-family: "Iosevka Charon Mono", sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.page.fade-exit {
+  opacity: 0;
+}
+
+.background {
+  position: absolute;
+  inset: -40px;
+  transition: transform 0.15s ease-out;
+  z-index: -19;
+}
+
+.sky-blue-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.page-image {
+  max-width: 80%;
+  margin-top: 20px;
+}
+
+.sound-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.sound-button img {
+  width: 32px;
+  height: 32px;
+}
+
+#WorkshopBG {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopBG.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -10;
+}
+
+#WorkshopBOOK {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopBOOK.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -9;
+}
+
+#WorkshopPC {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopPC.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -8;
+}
+
+#WorkshopCANVA {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopCANVA.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -7;
+}
+
+#RoomFILTER {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/RoomFILTER.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -6;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+#WorkshopLIGHT1 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopLIGHT1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -5;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(1) saturate(1);
+  pointer-events: none;
+}
+
+#WorkshopLIGHT2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopLIGHT2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -4;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(0.8) saturate(1);
+  pointer-events: none;
+}
+
+#WorkshopPARTICLES {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopPARTICLES.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -3;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(0.8) saturate(1);
+  pointer-events: none;
+}
+
+#WorkshopHIDE {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopHIDE.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#CreditsBG {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/CreditsBG.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -10;
+}
+
+#CreditsLIGHT1 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/CreditsLIGHT1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -6;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(1) saturate(1);
+}
+
+#CreditsLIGHT2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/CreditsLIGHT2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -5;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(0.8) saturate(1);
+}
+
+#CreditsPARTICLES {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/CreditsPARTICLES.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -4;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(0.8) saturate(1);
+}
+
+#CreditsHIDE {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/CreditsHIDE.png);
+  background-size: cover;
+}
+
+#CreditsPAPER {
+  width: 1000px;
+  height: 630px;
+  position: absolute;
+  top: 150px;
+  left: 400px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(-5deg) rotateZ(3deg);
+  background-image: url(../assets/Images/CreditsPAPER.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+#CreditsContent {
+  color: #422522;
+  font-size: 24px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  font-size: 40px;
+  color: white;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  z-index: 999;
+  transition: transform 0.2s;
+}
+
+.back-button:hover {
+  transform: scale(1.2);
+}
