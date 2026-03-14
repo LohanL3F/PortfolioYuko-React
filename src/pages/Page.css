@@ -103,6 +103,26 @@ body {
   z-index: -7;
 }
 
+#WorkshopCANVA2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopCANVA2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -7;
+}
+
+#WorkshopCANVA3 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/WorkshopCANVA3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -7;
+}
+
 #RoomFILTER {
   width: 100%;
   height: 100%;
@@ -265,4 +285,112 @@ body {
 
 .back-button:hover {
   transform: scale(1.2);
+}
+
+.canvas-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: -6;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Pour les trois CANVA */
+#WorkshopCANVA {
+  background-image: url(../assets/Images/WorkshopCANVA.png);
+}
+#WorkshopCANVA2 {
+  background-image: url(../assets/Images/WorkshopCANVA2.png);
+}
+#WorkshopCANVA3 {
+  background-image: url(../assets/Images/WorkshopCANVA3.png);
+}
+
+.left-button,
+.right-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.left-button {
+  left: 40px;
+  transition: all 0.2s ease-in-out;
+  transform: perspective(100px) rotateY(5deg) rotateZ(6deg);
+}
+
+.right-button {
+  right: 40px;
+  transition: all 0.2s ease-in-out;
+  transform: perspective(100px) rotateY(-5deg) rotateZ(-6deg);
+}
+
+.left-button:hover,
+.right-button:hover {
+  color: #d67b64;
+}
+
+.left-button:hover {
+  transform: perspective(100px) rotateY(-5deg) rotateZ(-7deg) scale(1.5);
+}
+
+.right-button:hover {
+  transform: perspective(100px) rotateY(5deg) rotateZ(7deg) scale(1.5);
+}
+
+@keyframes lightPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.see-button {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  font-size: 24px;
+  background: none;
+  border: 0px solid white;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.2s ease-in-out;
+  background-image: url(../assets/Images/TAB.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 150px;
+  color: rgb(223, 186, 155);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: perspective(100px) rotateY(-5deg) rotateZ(-6deg) translateX(-50%);
+}
+
+.see-button:hover {
+  transform: translateX(-50%) perspective(100px) rotateY(-5deg) rotateZ(-7deg);
+  color: #d67b64;
+  box-shadow: 5px 5px rgba(214, 123, 100, 0.5);
 }
