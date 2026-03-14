@@ -1,0 +1,342 @@
+* {
+  box-sizing: border-box;
+  font-family: "Iosevka Charon Mono", sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  animation: popIn 1s ease-in-out;
+  background-color: #0a0808;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.app {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* BACKGROUND 3D */
+
+.background {
+  position: absolute;
+  inset: -40px;
+
+  transition: transform 0.15s ease-out;
+  z-index: -1;
+}
+
+#RoomBG {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomBG.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -10;
+}
+
+#RoomBED {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomBED.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -9;
+}
+
+#RoomCHAR {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomCHAR.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -8;
+}
+
+#RoomFILTER {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomFILTER.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -7;
+  mix-blend-mode: multiply;
+  transition: all 0.3s ease-in-out;
+}
+
+#RoomLIGHT1 {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomLIGHT1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -6;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(1) saturate(1);
+}
+
+#RoomLIGHT2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomLIGHT2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -5;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(0.8) saturate(1);
+}
+
+#RoomHIDE {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomHIDE.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+}
+
+#RoomPARTICLES {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomPARTICLES.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -3;
+  mix-blend-mode: color-dodge;
+  filter: brightness(0.8) saturate(1);
+}
+
+#RoomPLANTS {
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/Images/RoomPLANTS.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -8;
+}
+
+@keyframes lightPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+#RoomLIGHT1,
+#RoomLIGHT2 {
+  animation: lightPulse 3s ease-in-out infinite alternate;
+}
+
+.sound-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.sound-button img {
+  width: 32px;
+  height: 32px;
+}
+
+.NavTab {
+  position: fixed;
+  top: 0;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  will-change: transform;
+  pointer-events: auto;
+  gap: 80px;
+  z-index: 100;
+}
+
+.NavTab a {
+  text-decoration: none;
+}
+
+.NavButton {
+  width: 850px;
+  height: 250px;
+  background-image: url("assets/Images/TAB.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  transform-style: preserve-3d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  color: rgb(223, 186, 155);
+  text-decoration: none;
+
+  user-select: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.NavButton:hover {
+  color: #d67b64;
+}
+
+/* effet 3D permanent */
+.First {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(-10deg);
+
+  transition: all ease-in-out 0.3s;
+}
+
+.Second {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(2deg);
+
+  transition: all ease-in-out 0.3s;
+}
+
+.Third {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(10deg);
+
+  transition: all ease-in-out 0.3s;
+}
+
+.First:hover {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(-11deg)
+    translateX(-20px);
+  box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
+  margin-right: 50px;
+}
+
+.Second:hover {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(3deg) translateX(-20px);
+  box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
+  margin-right: 50px;
+}
+
+.Third:hover {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(11deg)
+    translateX(-20px);
+  box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
+  margin-right: 50px;
+}
+
+.NavIcon {
+  width: 150px;
+  height: 150px;
+  margin-left: 20px;
+  position: absolute;
+  top: -60px;
+  left: -140px;
+  transform: rotate(-15deg) scale(0.1);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.NavButton:hover .NavIcon {
+  opacity: 1;
+  transform: rotate(-15deg) scale(1);
+}
+
+.transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0808;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease;
+  z-index: 9999;
+}
+
+.transition-overlay.active {
+  opacity: 1;
+}
+
+#devMsg {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 200px;
+}
+
+#devMsg2 {
+  color: rgba(255, 255, 255, 0.212);
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#ResponsiveMsg {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  #ResponsiveMsg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0808;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+}
+
+#FilterBTN {
+  position: absolute;
+  top: 15px;
+  font-size: 30px;
+  right: 70px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+}
