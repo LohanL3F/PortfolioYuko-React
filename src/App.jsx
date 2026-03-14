@@ -5,6 +5,7 @@ import Profil from "./pages/Profil";
 import CreditsPage from "./pages/Credits";
 import { useState, useEffect } from "react";
 import { isFilterEnabled, setFilterEnabled } from "./utils/filterStorage";
+import Click from "./assets/Musiques/lightClick.mp3";
 
 function App() {
   const [filterEnabled, setFilter] = useState(true);
