@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Accueil from "./pages/Accueil";
 import Atelier from "./pages/Atelier";
 import Profil from "./pages/Profil";
@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <div id="ResponsiveMsg">Haha c'est pas responsive du tout ...</div>
-      <Router>
+      <HashRouter>
         <Routes>
           <Route
             path="/"
@@ -63,7 +63,7 @@ function App() {
             }
           />
         </Routes>
-      </Router>
+      </HashRouter>
     </div>
   );
 }
