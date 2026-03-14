@@ -10,6 +10,7 @@ import Workshop from "../assets/Images/PopWorkshop.gif";
 import About from "../assets/Images/PopAbout.gif";
 import Credits from "../assets/Images/PopCredits.gif";
 import { useNavigate } from "react-router-dom";
+import lightClick from "../assets/Musiques/lightClick.mp3";
 import "../App.css";
 
 export default function Accueil({ filterEnabled, toggleFilter }) {
@@ -36,6 +37,12 @@ export default function Accueil({ filterEnabled, toggleFilter }) {
     setMuted(!muted);
   };
 
+  const playLightClick = () => {
+    const audio = new Audio(lightClick);
+    audio.volume = 0.4;
+    audio.play().catch(() => {});
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
     audio.volume = 0.4;
@@ -59,7 +66,13 @@ export default function Accueil({ filterEnabled, toggleFilter }) {
 
   return (
     <div className="app">
-      <button onClick={toggleFilter} id="FilterBTN">
+      <button
+        onClick={() => {
+          toggleFilter();
+          playLightClick();
+        }}
+        id="FilterBTN"
+      >
         {filterEnabled ? "🔵" : "🟡"}
       </button>
 
@@ -70,7 +83,13 @@ export default function Accueil({ filterEnabled, toggleFilter }) {
 
       <audio ref={audioRef} src={music} />
 
-      <button className="sound-button" onClick={toggleSound}>
+      <button
+        className="sound-button"
+        onClick={() => {
+          toggleSound();
+          playLightClick();
+        }}
+      >
         <img src={muted ? noSoundIcon : soundIcon} alt="sound toggle" />
       </button>
 
