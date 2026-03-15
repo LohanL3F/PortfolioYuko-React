@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import music from "../assets/Musiques/BreakingGround.mp3";
 import soundIcon from "../assets/Images/sound.png";
 import noSoundIcon from "../assets/Images/Nosound.png";
@@ -7,48 +7,27 @@ import ProfileBackground from "../components/ProfileBackground";
 import { useNavigate } from "react-router-dom";
 import lightClick from "../assets/Musiques/lightClick.mp3";
 
-export default function Profile() {
+export default function Profile({ muted, toggleSound, setMusic }) {
   const navigate = useNavigate();
-  const audioRef = useRef(null);
-  const [muted, setMuted] = useState(false);
-
-  const toggleSound = () => {
-    const audio = audioRef.current;
-    audio.muted = !muted;
-    setMuted(!muted);
-  };
 
   const playLightClick = () => {
-    const audio = new Audio(lightClick);
-    audio.volume = 0.4;
-    audio.play().catch(() => {});
+    if (!muted) {
+      const audio = new Audio(lightClick);
+      audio.volume = 0.4;
+      audio.play().catch(() => {});
+    }
   };
 
   useEffect(() => {
-    const audio = audioRef.current;
-    audio.volume = 0.4;
-    audio.loop = true;
-
-    // Play on first user interaction (click or touch)
-    const startMusic = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", startMusic);
-    };
-
-    window.addEventListener("click", startMusic);
-
-    // Cleanup (remove event listener on unmount)
-    return () => window.removeEventListener("click", startMusic);
+    setMusic(music);
   }, []);
 
   return (
     <div className="page">
       <ProfileBackground />
-
       <button className="back-button" onClick={() => navigate("/")}>
         ←
       </button>
-      <audio ref={audioRef} src={music} />
       <button
         className="sound-button"
         onClick={() => {

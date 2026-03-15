@@ -312,7 +312,7 @@ body {
   position: absolute;
   z-index: -6;
   mix-blend-mode: color-dodge;
-  opacity: 0.5;
+  opacity: 1;
   filter: brightness(1) saturate(1);
   pointer-events: none;
 }
@@ -326,7 +326,7 @@ body {
   position: absolute;
   z-index: -5;
   mix-blend-mode: color-dodge;
-  opacity: 0.5;
+  opacity: 0.8;
   filter: brightness(0.8) saturate(1);
   pointer-events: none;
 }

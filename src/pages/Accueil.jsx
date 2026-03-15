@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import NavButton from "../components/NavButton";
 import Background from "../components/Background";
 import music from "../assets/Musiques/small talk.mp3";
@@ -13,10 +13,14 @@ import { useNavigate } from "react-router-dom";
 import lightClick from "../assets/Musiques/lightClick.mp3";
 import "../App.css";
 
-export default function Accueil({ filterEnabled, toggleFilter }) {
+export default function Accueil({
+  filterEnabled,
+  toggleFilter,
+  muted,
+  toggleSound,
+  setMusic,
+}) {
   const [transitioning, setTransitioning] = useState(false);
-  const audioRef = useRef(null);
-  const [muted, setMuted] = useState(false);
   const navigate = useNavigate();
 
   const playHoverSound = () => {
@@ -31,12 +35,6 @@ export default function Accueil({ filterEnabled, toggleFilter }) {
     audio.play().catch(() => {});
   };
 
-  const toggleSound = () => {
-    const audio = audioRef.current;
-    audio.muted = !muted;
-    setMuted(!muted);
-  };
-
   const playLightClick = () => {
     const audio = new Audio(lightClick);
     audio.volume = 0.4;
@@ -44,16 +42,7 @@ export default function Accueil({ filterEnabled, toggleFilter }) {
   };
 
   useEffect(() => {
-    const audio = audioRef.current;
-    audio.volume = 0.4;
-    audio.loop = true;
-
-    const startMusic = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", startMusic);
-    };
-
-    window.addEventListener("click", startMusic);
+    setMusic(music);
   }, []);
 
   const handleNavClick = (path) => {
@@ -80,8 +69,6 @@ export default function Accueil({ filterEnabled, toggleFilter }) {
       <div className={`transition-overlay ${transitioning ? "active" : ""}`} />
 
       <Background filterEnabled={filterEnabled} />
-
-      <audio ref={audioRef} src={music} />
 
       <button
         className="sound-button"
