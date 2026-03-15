@@ -20,11 +20,15 @@ function App() {
 
   useEffect(() => {
     const startMusic = () => {
-      if (audioRef.current) {
-        audioRef.current.src = homeMusic;
-        audioRef.current.muted = muted;
-        audioRef.current.play().catch(() => {});
-      }
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      audio.src = currentMusic;
+      audio.muted = muted;
+      audio.volume = 0.3;
+      audio.loop = true;
+      audio.play().catch(() => {});
+
       window.removeEventListener("click", startMusic);
       window.removeEventListener("touchstart", startMusic);
     };
@@ -36,12 +40,14 @@ function App() {
       window.removeEventListener("click", startMusic);
       window.removeEventListener("touchstart", startMusic);
     };
-  }, [muted]);
+  }, []);
 
   const toggleSound = () => {
-    const newValue = !muted;
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    audioRef.current.muted = newValue;
+    const newValue = !muted;
+    audio.muted = newValue;
 
     setMutedState(newValue);
     setMuted(newValue);
@@ -60,7 +66,7 @@ function App() {
     audio.volume = 0.3;
     audio.loop = true;
     audio.play().catch(() => {});
-  }, [currentMusic, muted]);
+  }, [currentMusic]);
 
   const toggleFilter = () => {
     setFilter((prev) => {
