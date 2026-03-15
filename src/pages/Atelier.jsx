@@ -68,7 +68,6 @@ import Shock from "../assets/Images/Animations/Shock.gif";
 import StartingScreencolored from "../assets/Images/Animations/StartingScreencolored.mp4";
 
 export default function Atelier() {
-  const videoRef = useRef(null);
   const [bookOpen, setBookOpen] = useState(false);
   const [zoomImage, setZoomImage] = useState(null);
 
