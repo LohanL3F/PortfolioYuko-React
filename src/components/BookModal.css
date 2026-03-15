@@ -83,6 +83,17 @@
 
   box-shadow: #42252242 10px 10px 0px;
   cursor: zoom-in;
+  transition: all 0.3s ease-in-out;
+}
+
+.page-right .picture:hover {
+  transform: perspective(300px) rotateY(-5deg) rotateZ(-5deg) scale(1.05)
+    translateX(-10px);
+}
+
+.page-left .picture:hover {
+  transform: perspective(300px) rotateY(5deg) rotateZ(-5deg) scale(1.05)
+    translateX(10px);
 }
 
 .book-controls {
