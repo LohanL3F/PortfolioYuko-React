@@ -23,7 +23,7 @@ body {
 
 .app {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
 }
@@ -312,7 +312,7 @@ body {
   display: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) and (orientation: portrait) {
   #ResponsiveMsg {
     display: block;
     position: absolute;
@@ -327,6 +327,26 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 9999;
+  }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+  .NavButton {
+    width: 60vw;
+    height: 18vw;
+    font-size: 7vw;
+  }
+
+  .NavTab {
+    gap: 40px;
+    right: 10px;
+  }
+
+  .NavIcon {
+    width: 80px;
+    height: 80px;
+    top: -30px;
+    left: -80px;
   }
 }
 
