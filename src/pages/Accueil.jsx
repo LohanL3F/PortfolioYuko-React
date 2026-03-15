@@ -12,6 +12,8 @@ import Credits from "../assets/Images/PopCredits.gif";
 import { useNavigate } from "react-router-dom";
 import lightClick from "../assets/Musiques/lightClick.mp3";
 import "../App.css";
+import FilterBlue from "../assets/Images/filterBlue.png";
+import FilterYellow from "../assets/Images/filterYellow.png";
 
 export default function Accueil({
   filterEnabled,
@@ -61,8 +63,12 @@ export default function Accueil({
           playLightClick();
         }}
         id="FilterBTN"
+        className="filter-button"
       >
-        {filterEnabled ? "🔵" : "🟡"}
+        <img
+          src={filterEnabled ? FilterBlue : FilterYellow}
+          alt="sound toggle"
+        />
       </button>
 
       {/* Transition Overlay */}
