@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import music from "../assets/Musiques/9am.mp3";
 import soundIcon from "../assets/Images/sound.png";
 import noSoundIcon from "../assets/Images/Nosound.png";
 import "./Page.css";
@@ -104,8 +103,9 @@ import MirrorFinished from "../assets/Images/Animations/MirrorFinished.mp4";
 import picturesketchwip from "../assets/Images/Animations/picturesketchwip.mp4";
 import Shock from "../assets/Images/Animations/Shock.gif";
 import StartingScreencolored from "../assets/Images/Animations/StartingScreencolored.mp4";
+import music from "../assets/Musiques/9am.mp3";
 
-export default function Atelier() {
+export default function Atelier({ muted, toggleSound, setMusic }) {
   const [bookOpen, setBookOpen] = useState(false);
   const [zoomImage, setZoomImage] = useState(null);
 
@@ -114,6 +114,10 @@ export default function Atelier() {
     audio.volume = 0.5;
     audio.play().catch(() => {});
   };
+
+  useEffect(() => {
+    setMusic(music);
+  }, []);
 
   const booksByCanvas = [
     // DRAWINGS
@@ -1128,8 +1132,6 @@ export default function Atelier() {
   ];
 
   const navigate = useNavigate();
-  const audioRef = useRef(null);
-  const [muted, setMuted] = useState(false);
   const [canvasIndex, setCanvasIndex] = useState(0);
   const nextCanvas = () => {
     setCanvasIndex((prev) => (prev + 1) % 3);
@@ -1164,34 +1166,11 @@ export default function Atelier() {
     hover.play().catch(() => {});
   };
 
-  const toggleSound = () => {
-    const audio = audioRef.current;
-    audio.muted = !muted;
-    setMuted(!muted);
-  };
-
   const playLightClick = () => {
     const audio = new Audio(lightClick);
     audio.volume = 0.4;
     audio.play().catch(() => {});
   };
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    audio.volume = 0.4;
-    audio.loop = true;
-
-    // Play on first user interaction (click or touch)
-    const startMusic = () => {
-      audio.play().catch(() => {});
-      window.removeEventListener("click", startMusic);
-    };
-
-    window.addEventListener("click", startMusic);
-
-    // Cleanup (remove event listener on unmount)
-    return () => window.removeEventListener("click", startMusic);
-  }, []);
 
   return (
     <div className="page">
@@ -1199,7 +1178,6 @@ export default function Atelier() {
       <button className="back-button" onClick={() => navigate("/")}>
         ←
       </button>
-      <audio ref={audioRef} src={music} />
       <button
         className="sound-button"
         onClick={() => {
