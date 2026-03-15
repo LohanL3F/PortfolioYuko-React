@@ -39,6 +39,31 @@ import VincentRaccoons from "../assets/Images/Drawings/VincentRaccoons.png";
 import Yukoc from "../assets/Images/Drawings/Yukoc.png";
 import YuyuHopper2 from "../assets/Images/Drawings/YuyuHopper2.png";
 import YuyuOctimed from "../assets/Images/Drawings/YuyuOctimed.png";
+import YukoOC from "../assets/Images/Drawings/YukoOC.png";
+import YukoOCBARBU from "../assets/Images/Drawings/YukoOCBARBU.png";
+import DragonAndDragon from "../assets/Images/Drawings/DragonAndDragon.png";
+import FrinDessin from "../assets/Images/Drawings/FrinDessin.png";
+import YukoTutsu from "../assets/Images/Drawings/YukoTutsu.png";
+import FrenhirFanart from "../assets/Images/Drawings/FrenhirFanart.png";
+import GOODMORNIIING from "../assets/Images/Drawings/GOODMORNIIING.png";
+import idk from "../assets/Images/Drawings/idk.png";
+import kaaach from "../assets/Images/Drawings/kaaach.png";
+import KidFrenhir from "../assets/Images/Drawings/KidFrenhir.png";
+import LandscapeTry from "../assets/Images/Drawings/Landscape.png";
+import lighttest from "../assets/Images/Drawings/lighttest.png";
+import MhiiingFanart from "../assets/Images/Drawings/MhiiingFanart.png";
+import PapyragornPfp from "../assets/Images/Drawings/PapyragornPfp.png";
+import RehkpeRapido from "../assets/Images/Drawings/RehkpeRapido.png";
+import Septsent from "../assets/Images/Drawings/Septsent.png";
+import Water from "../assets/Images/Drawings/Water.png";
+import WitchFrog from "../assets/Images/Drawings/WitchFrog.png";
+import yipee from "../assets/Images/Drawings/yipee.png";
+import YukOC2 from "../assets/Images/Drawings/YukOC2.png";
+import yuyu from "../assets/Images/Drawings/yuyu.png";
+import YuyuOmori from "../assets/Images/Drawings/YuyuOmori.png";
+import YuYuTestFurry2 from "../assets/Images/Drawings/YuYuTestFurry2.png";
+import LAPIN from "../assets/Images/Drawings/LAPIN.png";
+import ConceptLapin from "../assets/Images/Drawings/ConceptLapin.png";
 
 // SKETCHES :
 
@@ -54,6 +79,19 @@ import HimaFanartcroquis from "../assets/Images/Sketches/Hima Fanart croquis.png
 import Rainbowcroquis from "../assets/Images/Sketches/Rainbowcroquis.png";
 import YuyuHopper from "../assets/Images/Sketches/YuyuHopper.png";
 import yuyuhoppersketch from "../assets/Images/Sketches/yuyuhoppersketch.png";
+import annivdjakcroquis from "../assets/Images/Sketches/annivdjakcroquis.png";
+import AOTPAPYCroquis from "../assets/Images/Sketches/AOTPAPYCroquis.png";
+import BeachYeeeCroquis from "../assets/Images/Sketches/BeachYeeeCroquis.png";
+import BeastmasterDjakkaCroquis from "../assets/Images/Sketches/BeastmasterDjakkaCroquis.png";
+import conceptillu from "../assets/Images/Sketches/conceptillu.png";
+import croquis from "../assets/Images/Sketches/croquis.png";
+import croquisrapido4 from "../assets/Images/Sketches/croquisrapido4.png";
+import FrinCroquis from "../assets/Images/Sketches/FrinCroquis.png";
+import GeorgeHunter from "../assets/Images/Sketches/GeorgeHunter.png";
+import LesCoupainsWIPO from "../assets/Images/Sketches/LesCoupainsWIPO.png";
+import unknown from "../assets/Images/Sketches/unknown.png";
+import yukoOCCroquis from "../assets/Images/Sketches/yukoOCCroquis.png";
+import yuyuCroquisOC from "../assets/Images/Sketches/yuyuCroquisOC.png";
 
 // ANIMATIONS :
 
@@ -392,7 +430,317 @@ export default function Atelier() {
             }}
           />
         ),
-        right: null,
+        right: (
+          <img
+            src={YukoOC}
+            alt="YukoOC"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YukoOC);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={YukoOCBARBU}
+            alt="YukoOCBARBU"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YukoOCBARBU);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={DragonAndDragon}
+            alt="DragonAndDragon"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(DragonAndDragon);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={FrinDessin}
+            alt="FrinDessin"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(FrinDessin);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={YukoTutsu}
+            alt="YukoTutsu"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YukoTutsu);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={FrenhirFanart}
+            alt="FrenhirFanart"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(FrenhirFanart);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={GOODMORNIIING}
+            alt="GOODMORNIIING"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(GOODMORNIIING);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={idk}
+            alt="idk"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(idk);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={kaaach}
+            alt="kaaach"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(kaaach);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={KidFrenhir}
+            alt="KidFrenhir"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(KidFrenhir);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={LandscapeTry}
+            alt="LandscapeTry"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(LandscapeTry);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={lighttest}
+            alt="lighttest"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(lighttest);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={MhiiingFanart}
+            alt="MhiiingFanart"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(MhiiingFanart);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={PapyragornPfp}
+            alt="PapyragornPfp"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(PapyragornPfp);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={RehkpeRapido}
+            alt="RehkpeRapido"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(RehkpeRapido);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={Septsent}
+            alt="Septsent"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Septsent);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={Water}
+            alt="Water"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(Water);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={WitchFrog}
+            alt="WitchFrog"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(WitchFrog);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={yipee}
+            alt="yipee"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(yipee);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={YukOC2}
+            alt="YukOC2"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YukOC2);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={yuyu}
+            alt="yuyu"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(yuyu);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={YuyuOmori}
+            alt="YuyuOmori"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YuyuOmori);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={YuYuTestFurry2}
+            alt="YuYuTestFurry2"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(YuYuTestFurry2);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={LAPIN}
+            alt="LAPIN"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(LAPIN);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={ConceptLapin}
+            alt="ConceptLapin"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(ConceptLapin);
+            }}
+          />
+        ),
       },
     ],
 
@@ -534,6 +882,158 @@ export default function Atelier() {
             }}
           />
         ),
+      },
+
+      {
+        left: (
+          <img
+            src={annivdjakcroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(annivdjakcroquis);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={AOTPAPYCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(AOTPAPYCroquis);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={BeachYeeeCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(BeachYeeeCroquis);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={BeastmasterDjakkaCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(BeastmasterDjakkaCroquis);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={conceptillu}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(conceptillu);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={croquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(croquis);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={croquisrapido4}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(croquisrapido4);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={FrinCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(FrinCroquis);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={GeorgeHunter}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(GeorgeHunter);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={LesCoupainsWIPO}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(LesCoupainsWIPO);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={unknown}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(unknown);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={yukoOCCroquis}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(yukoOCCroquis);
+            }}
+          />
+        ),
+      },
+
+      {
+        left: (
+          <img
+            src={yuyuCroquisOC}
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(yuyuCroquisOC);
+            }}
+          />
+        ),
+        right: null,
       },
     ],
 
