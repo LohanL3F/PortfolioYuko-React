@@ -30,7 +30,7 @@ body {
   position: absolute;
   inset: -40px;
   transition: transform 0.15s ease-out;
-  z-index: -19;
+  z-index: 1;
 }
 
 .sky-blue-background {
@@ -242,6 +242,7 @@ body {
   height: 100%;
   background-image: url(../assets/Images/CreditsHIDE.png);
   background-size: cover;
+  pointer-events: none;
 }
 
 #CreditsPAPER {
@@ -257,6 +258,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   padding: 20px;
+  pointer-events: none;
 }
 
 #CreditsContent {
@@ -265,6 +267,154 @@ body {
   text-align: left;
   padding: 20px;
   border-radius: 10px;
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+#CreditsContent a {
+  color: #422522;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+#CreditsContent a:hover {
+  font-weight: bold;
+}
+
+#ProfileBG {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/ProfileBG.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -10;
+}
+
+#ProfileBoard {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/ProfileBoard.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -9;
+}
+
+#ProfileLIGHT1 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/ProfileLIGHT1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -6;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(1) saturate(1);
+  pointer-events: none;
+}
+
+#ProfileLIGHT2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/ProfileLIGHT2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -5;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  filter: brightness(0.8) saturate(1);
+  pointer-events: none;
+}
+
+#ProfileLIGHT1,
+#ProfileLIGHT2,
+#RoomFILTER,
+#CreditsHIDE,
+#RoomPARTICLES {
+  pointer-events: none;
+}
+
+.background div {
+  pointer-events: none;
+}
+
+#BoardContent,
+#BoardContent * {
+  pointer-events: auto;
+}
+
+#BoardContent {
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/Images/BoardContent.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -6;
+  width: 70%;
+  height: 70%;
+  color: #422522;
+  top: 6.8%;
+  left: 15%;
+  padding: 50px;
+}
+
+#BoardContent h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#BoardContent p {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.near-picture {
+  position: relative;
+  left: 10%;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+#SocialsLinks {
+  display: flex;
+  justify-content: start;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+#SocialsLinks a {
+  text-decoration: none;
+  font-size: 24px;
+  color: inherit;
+  transition: all 0.1s ease-in-out;
+}
+
+#SocialsLinks a:hover {
+  font-weight: bold;
+}
+
+#SkillsBoard {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+#SkillsBoard p {
+  background-color: #68573898;
+  color: #422522;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 .back-button {

@@ -7,7 +7,7 @@ import CreditsBackground from "../components/CreditsBackground";
 import { useNavigate } from "react-router-dom";
 import lightClick from "../assets/Musiques/lightClick.mp3";
 
-export default function Atelier() {
+export default function Credits() {
   const navigate = useNavigate();
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(false);
@@ -47,6 +47,7 @@ export default function Atelier() {
       <button className="back-button" onClick={() => navigate("/")}>
         ←
       </button>
+
       <audio ref={audioRef} src={music} />
       <button
         className="sound-button"

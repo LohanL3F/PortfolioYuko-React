@@ -31,7 +31,9 @@ const CreditsBackground = () => {
               factor = 15;
               break;
             case "RoomFILTER":
+            case "CreditsContent":
               factor = 0;
+              break;
             case "CreditsLIGHT1":
             case "CreditsLIGHT2":
               factor = 35;
@@ -74,11 +76,39 @@ const CreditsBackground = () => {
           <p style={{ fontWeight: "bold", fontSize: "34px" }}>CREDITS :</p>
           <p>Concept, Design & Development : YukoSmile</p>
           <p style={{ fontWeight: "bold" }}>Musics :</p>
-          <p>Going Under OST - Make your dreams fizzle (Aggro Crab)</p>
-          <p>Going Under OST - 9:01 am (Aggro Crab)</p>
-          <p>Going Under OST - Small Talk (Aggro Crab)</p>
+          <a
+            href="https://youtu.be/yfQ-UJ1J6Os?si=_hD8krjJPVLKtBB3"
+            target="_blank"
+          >
+            Going Under OST - Make your dreams fizzle (Aggro Crab)
+          </a>
+          <br />
+          <a
+            href="https://youtu.be/euFDA2hDw7U?si=aOhkgHbv__PFcXp4"
+            target="_blank"
+          >
+            Going Under OST - 9:01 am (Aggro Crab)
+          </a>
+          <br />
+          <a
+            href="https://youtu.be/7nTv0VWPJ1A?si=guZmT6XTNNKCt0oM"
+            target="_blank"
+          >
+            Going Under OST - Small Talk (Aggro Crab)
+          </a>
+          <br />
+          <a
+            href="https://youtu.be/Fi-M86Aj6gc?si=NEUTBRj7Hs74a0rL"
+            target="_blank"
+          >
+            Breaking Ground - Daniel Koestner
+          </a>
+
           <p style={{ fontWeight: "bold" }}>Sound Effects :</p>
-          <p>Pixabay library</p>
+
+          <a href="https://pixabay.com/fr/" target="_blank">
+            Pixabay library
+          </a>
         </div>
       </div>
     </div>

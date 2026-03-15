@@ -126,6 +126,7 @@ body {
   z-index: -3;
   mix-blend-mode: color-dodge;
   filter: brightness(0.8) saturate(1);
+  pointer-events: none;
 }
 
 #RoomPLANTS {
