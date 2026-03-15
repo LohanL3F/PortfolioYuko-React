@@ -24,7 +24,9 @@ function App() {
 
   return (
     <div>
-      <div id="ResponsiveMsg">Haha c'est pas responsive du tout ...</div>
+      <div id="ResponsiveMsg">
+        Retourne ton appareil pour une meilleure expérience.
+      </div>
       <HashRouter>
         <Routes>
           <Route
