@@ -64,6 +64,11 @@ body {
   height: 32px;
 }
 
+.filter-button img {
+  width: 40px;
+  height: 40px;
+}
+
 #WorkshopBG {
   width: 100%;
   height: 100%;
