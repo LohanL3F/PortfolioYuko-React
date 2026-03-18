@@ -10,6 +10,7 @@ import lightClick from "../assets/Musiques/lightClick.mp3";
 export default function Profile({ muted, toggleSound, setMusic }) {
   const navigate = useNavigate();
 
+  // "Switch" sound when you click on filter/mute button
   const playLightClick = () => {
     if (!muted) {
       const audio = new Audio(lightClick);
@@ -18,6 +19,7 @@ export default function Profile({ muted, toggleSound, setMusic }) {
     }
   };
 
+  // Plays page ambiant music
   useEffect(() => {
     setMusic(music);
   }, []);
