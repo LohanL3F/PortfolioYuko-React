@@ -23,8 +23,7 @@ Screenshots du site :
 
 **Atelier** :
 
- <img src="WorkshopNoFilter.png" alt="isolated" width="300"/>
- <img src="Workshop.png" alt="isolated" width="300"/>
+ <img src="WorkshopNoFilter.png" alt="isolated" width="300"/><img src="Workshop.png" alt="isolated" width="300"/>
 
 ---
 
