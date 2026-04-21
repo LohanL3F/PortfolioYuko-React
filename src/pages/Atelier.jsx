@@ -62,6 +62,9 @@ import YuyuOmori from "../assets/Images/Drawings/YuyuOmori.png";
 import YuYuTestFurry2 from "../assets/Images/Drawings/YuYuTestFurry2.png";
 import LAPIN from "../assets/Images/Drawings/LAPIN.png";
 import ConceptLapin from "../assets/Images/Drawings/ConceptLapin.png";
+import RandomColorAnimal from "../assets/Images/Drawings/RandomColorAnimal.png";
+import RandomColorGirl from "../assets/Images/Drawings/RandomColorGirl.png";
+import RandomColorChar from "../assets/Images/Drawings/RandomColorChar.png";
 
 // SKETCHES :
 
@@ -740,7 +743,42 @@ export default function Atelier({ muted, toggleSound, setMusic }) {
             }}
           />
         ),
-        right: null
+        right: (
+          <img
+            src={RandomColorAnimal}
+            alt="RandomColorAnimal"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(RandomColorAnimal);
+            }}
+        />
+        )
+      },
+
+      {
+        left: (
+          <img
+            src={RandomColorGirl}
+            alt="RandomColorGirl"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(RandomColorGirl);
+            }}
+          />
+        ),
+        right: (
+          <img
+            src={RandomColorChar}
+            alt="RandomColorChar"
+            className="picture"
+            onClick={() => {
+              pickUpSound();
+              setZoomImage(RandomColorChar);
+            }}
+        />
+        )
       },
     ],
 
