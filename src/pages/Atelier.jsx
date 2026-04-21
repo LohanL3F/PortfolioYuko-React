@@ -105,19 +105,26 @@ import StartingScreencolored from "../assets/Images/Animations/StartingScreencol
 import music from "../assets/Musiques/9am.mp3";
 
 export default function Atelier({ muted, toggleSound, setMusic }) {
+
+  // Book modal 
   const [bookOpen, setBookOpen] = useState(false);
+
+  // Image closeup
   const [zoomImage, setZoomImage] = useState(null);
 
+  // Plays sound when you zoom picture
   const pickUpSound = () => {
     const audio = new Audio(pickUp);
     audio.volume = 0.5;
     audio.play().catch(() => {});
   };
 
+  // Play page ambiant music
   useEffect(() => {
     setMusic(music);
   }, []);
 
+  // Bookmodal depending from the selected canva
   const booksByCanvas = [
     // DRAWINGS
     [
@@ -1119,9 +1126,11 @@ export default function Atelier({ muted, toggleSound, setMusic }) {
       },
     ],
   ];
-
+  
   const navigate = useNavigate();
   const [canvasIndex, setCanvasIndex] = useState(0);
+
+  // Next page
   const nextCanvas = () => {
     setCanvasIndex((prev) => (prev + 1) % 3);
     const slideAudio = new Audio(slide);
@@ -1132,29 +1141,34 @@ export default function Atelier({ muted, toggleSound, setMusic }) {
     clickAudio.play();
   };
 
+  // Previous page
   const prevCanvas = () => {
     setCanvasIndex((prev) => (prev - 1 + 3) % 3);
     const clickAudio = new Audio(click);
     clickAudio.volume = 0.5;
     clickAudio.play();
 
+  // Sound when you switch page
     const slideAudio = new Audio(slide);
     slideAudio.volume = 0.5;
     slideAudio.play();
   };
 
+  // Sound when you click the "see" button
   const seeBtn = () => {
     const confirmAudio = new Audio(confirm);
     confirmAudio.volume = 0.5;
     confirmAudio.play();
   };
 
+  // Sound when you hover the element
   const playHoverSound = () => {
     const hover = new Audio(click);
     hover.volume = 0.3;
     hover.play().catch(() => {});
   };
 
+  // "Switch" sound when you click on filter or mute button
   const playLightClick = () => {
     const audio = new Audio(lightClick);
     audio.volume = 0.4;

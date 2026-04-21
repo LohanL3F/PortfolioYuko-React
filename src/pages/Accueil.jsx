@@ -22,31 +22,39 @@ export default function Accueil({
   toggleSound,
   setMusic,
 }) {
+
+  // Transition when you change page
   const [transitioning, setTransitioning] = useState(false);
+  
   const navigate = useNavigate();
 
+  // Sound when you hover elements
   const playHoverSound = () => {
     const audio = new Audio(hoverSound);
     audio.volume = 0.3;
     audio.play().catch(() => {});
   };
 
+  // Sound when you click elements
   const playClickSound = () => {
     const audio = new Audio(clickSound);
     audio.volume = 0.4;
     audio.play().catch(() => {});
   };
 
+  // "Switch" sound when you click on filter/mute button
   const playLightClick = () => {
     const audio = new Audio(lightClick);
     audio.volume = 0.4;
     audio.play().catch(() => {});
   };
 
+  // Play page ambiant music
   useEffect(() => {
     setMusic(music);
   }, []);
 
+  // Plays the transition when you click on a nav button
   const handleNavClick = (path) => {
     setTransitioning(true);
     setTimeout(() => {
