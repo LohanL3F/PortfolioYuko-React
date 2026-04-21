@@ -37,8 +37,7 @@ import TheMeeting from "../assets/Images/Drawings/TheMeeting.png";
 import VincentRaccoons from "../assets/Images/Drawings/VincentRaccoons.png";
 import Yukoc from "../assets/Images/Drawings/Yukoc.png";
 import YuyuHopper2 from "../assets/Images/Drawings/YuyuHopper2.png";
-import YuyuOctimed from "../assets/Images/Drawings/YuyuOctimed.png";
-import YukoOC from "../assets/Images/Drawings/YukoOC.png";
+import YuyuOctimed from "../assets/Images/Drawings/YuyuOCtimed.png";
 import YukoOCBARBU from "../assets/Images/Drawings/YukoOCBARBU.png";
 import DragonAndDragon from "../assets/Images/Drawings/DragonAndDragon.png";
 import FrinDessin from "../assets/Images/Drawings/FrinDessin.png";
@@ -436,12 +435,12 @@ export default function Atelier({ muted, toggleSound, setMusic }) {
         ),
         right: (
           <img
-            src={YukoOC}
-            alt="YukoOC"
+            src={ConceptLapin}
+            alt="ConceptLapin"
             className="picture"
             onClick={() => {
               pickUpSound();
-              setZoomImage(YukoOC);
+              setZoomImage(ConceptLapin);
             }}
           />
         ),
@@ -734,17 +733,7 @@ export default function Atelier({ muted, toggleSound, setMusic }) {
             }}
           />
         ),
-        right: (
-          <img
-            src={ConceptLapin}
-            alt="ConceptLapin"
-            className="picture"
-            onClick={() => {
-              pickUpSound();
-              setZoomImage(ConceptLapin);
-            }}
-          />
-        ),
+        right: null
       },
     ],
 
