@@ -127,7 +127,19 @@ export default function Accueil({
             handleNavClick("/credits");
           }}
         >
-          Crédits
+          Credits
+          <img src={Credits} className="NavIcon" alt="Crédits" />
+        </NavButton>
+
+        <NavButton
+          className="Fourth"
+          onMouthEnter={playHoverSound}
+          onClick={() => {
+            playClickSound();
+            handleNavClick("/credits");
+          }}
+        >
+          Projets
           <img src={Credits} className="NavIcon" alt="Crédits" />
         </NavButton>
       </div>

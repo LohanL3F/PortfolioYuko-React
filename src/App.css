@@ -238,6 +238,12 @@ body {
   transition: all ease-in-out 0.3s;
 }
 
+.Fourth {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(16deg) translateX(-50px);
+
+  transition: all ease-in-out 0.3s;
+}
+
 .First:hover {
   transform: perspective(1000px) rotateY(-30deg) rotateZ(-11deg)
     translateX(-20px);
@@ -254,6 +260,12 @@ body {
 .Third:hover {
   transform: perspective(1000px) rotateY(-30deg) rotateZ(11deg)
     translateX(-20px);
+  box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
+  margin-right: 50px;
+}
+
+.Fourth:hover {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(16deg) translateX(-50px);
   box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
   margin-right: 50px;
 }

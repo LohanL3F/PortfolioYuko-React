@@ -363,7 +363,7 @@ body {
   z-index: -7;
   width: 70%;
   height: 70%;
-  color: #251614;
+  color: #000000;
   top: 6.8%;
   left: 15%;
   padding: 50px;
@@ -415,8 +415,8 @@ body {
 }
 
 #SkillsBoard p {
-  background-color: #68573898;
-  color: #422522;
+  background-color: #00000027;
+  color: #000000;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 1.1rem;
