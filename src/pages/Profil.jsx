@@ -14,6 +14,7 @@ export default function Profile() {
 
   const playLightClick = () => playSfx(lightClick, 0.4);
 
+  // Plays page ambiant music
   useEffect(() => {
     setMusic(music);
   }, []);

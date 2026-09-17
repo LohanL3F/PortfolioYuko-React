@@ -21,6 +21,8 @@ export default function Atelier() {
   const { muted, toggleSound, sfxMuted, toggleSfx, setMusic, pauseMusic, resumeMusic } =
     useOutletContext();
   const [bookOpen, setBookOpen] = useState(false);
+
+  // Image closeup
   const [zoomImage, setZoomImage] = useState(null);
   const [fullscreenVideo, setFullscreenVideo] = useState(null);
   const [imagesPerPage, setImagesPerPage] = useState(4);
@@ -88,12 +90,15 @@ const booksByCanvas = [
 const navigate = useNavigate();
 const CANVAS_COUNT = booksByCanvas.length;
   const [canvasIndex, setCanvasIndex] = useState(0);
+
+  // Next page
   const nextCanvas = () => {
     setCanvasIndex((prev) => (prev + 1) % CANVAS_COUNT);
     playSfx(slide, 0.5);
     playSfx(click, 0.5);
   };
 
+  // Previous page
   const prevCanvas = () => {
     setCanvasIndex((prev) => (prev - 1 + CANVAS_COUNT) % CANVAS_COUNT);
     playSfx(click, 0.5);

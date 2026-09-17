@@ -12,9 +12,14 @@ import { isSfxMuted, setSfxMuted } from "./utils/sfxStorage";
 import homeMusic from "./assets/Musiques/small talk.mp3";
 
 function App() {
+
+  // Light / Dark filter
   const [filterEnabled, setFilter] = useState(true);
+  
   const audioRef = useRef(null);
   const [muted, setMutedState] = useState(() => isMuted() ?? true);
+
+  // Music "playlist" (depends on the page)
   const [currentMusic, setCurrentMusic] = useState(homeMusic);
   const [sfxMuted, setSfxMutedState] = useState(() => isSfxMuted());
 
@@ -35,6 +40,7 @@ function App() {
   };
 
   useEffect(() => {
+
     const startMusic = () => {
       const audio = audioRef.current;
       if (!audio) return;
@@ -54,6 +60,7 @@ function App() {
     };
   }, []);
 
+  // Mute / Unmute button
   const toggleSound = () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -63,6 +70,7 @@ function App() {
     setMuted(newValue);
   };
 
+  // Sets blue filter on pages
   useEffect(() => {
     setFilter(isFilterEnabled());
   }, []);
@@ -77,6 +85,7 @@ function App() {
     audio.play().catch(() => {});
   }, [currentMusic]);
 
+  // Toggle filter on / off 
   const toggleFilter = () => {
     setFilter((prev) => {
       const newValue = !prev;

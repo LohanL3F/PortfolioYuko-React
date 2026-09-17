@@ -19,6 +19,7 @@ import { playSfx } from "../utils/playSfx";
 export default function Accueil() {
   const { filterEnabled, toggleFilter, muted, toggleSound, setMusic } = useOutletContext();
   const [transitioning, setTransitioning] = useState(false);
+  
   const navigate = useNavigate();
 
   const playHoverSound = () => playSfx(hoverSound, 0.3);
@@ -31,6 +32,7 @@ export default function Accueil() {
     setMusic(music);
   }, []);
 
+  // Plays the transition when you click on a nav button
   const handleNavClick = (path) => {
     setTransitioning(true);
     setTimeout(() => {
