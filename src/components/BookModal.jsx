@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./BookModal.css";
 import bookModal from "../assets/Images/WorkShopBookModal.png";
+import { playSfx } from "../utils/playSfx";
 import paperSwitch from "../assets/Musiques/pageswitch.mp3";
 import pickUp from "../assets/Musiques/paper.mp3";
 import closeBook from "../assets/Musiques/closeBook.mp3";
 
-export default function BookModal({ isOpen, onClose, pages }) {
+export default function BookModal({ isOpen, onClose, pages, imagesPerPage }) {
   const [pageIndex, setPageIndex] = useState(0);
 
   useEffect(() => {
@@ -13,23 +14,9 @@ export default function BookModal({ isOpen, onClose, pages }) {
     videos.forEach((v) => v.pause());
   }, [pageIndex, isOpen]);
 
-  const playPageSwitch = () => {
-    const audio = new Audio(paperSwitch);
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
-  };
-
-  const playPickUp = () => {
-    const audio = new Audio(pickUp);
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
-  };
-
-  const playCloseBook = () => {
-    const audio = new Audio(closeBook);
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
-  };
+  const playPageSwitch = () => playSfx(paperSwitch, 0.5);
+  const playPickUp = () => playSfx(pickUp, 0.5);
+  const playCloseBook = () => playSfx(closeBook, 0.5);
 
   if (!isOpen || !pages || pages.length === 0) return null;
 
@@ -51,14 +38,12 @@ export default function BookModal({ isOpen, onClose, pages }) {
             ✖
           </button>
 
-          <div className="book-page">
-            <div className="page-left">
-              {React.cloneElement(pages[pageIndex].left, { key: pageIndex })}
-            </div>
-            <div className="page-right">
-              {pages[pageIndex].right &&
-                React.cloneElement(pages[pageIndex].right, { key: pageIndex })}
-            </div>
+          <div className={`book-page book-page--${imagesPerPage}`}>
+            {pages[pageIndex].map((img, idx) => (
+              <div className="page-slot" key={`${pageIndex}-${idx}`}>
+                {img}
+              </div>
+            ))}
           </div>
 
           <div className="book-controls">

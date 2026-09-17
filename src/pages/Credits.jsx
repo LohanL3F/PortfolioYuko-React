@@ -4,19 +4,15 @@ import soundIcon from "../assets/Images/sound.png";
 import noSoundIcon from "../assets/Images/Nosound.png";
 import "./Page.css";
 import CreditsBackground from "../components/CreditsBackground";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import lightClick from "../assets/Musiques/lightClick.mp3";
+import { playSfx } from "../utils/playSfx";
 
-export default function Credits({ muted, toggleSound, setMusic }) {
+export default function Credits() {
+  const { muted, toggleSound, setMusic } = useOutletContext();
   const navigate = useNavigate();
 
-  const playLightClick = () => {
-    if (!muted) {
-      const audio = new Audio(lightClick);
-      audio.volume = 0.4;
-      audio.play().catch(() => {});
-    }
-  };
+  const playLightClick = () => playSfx(lightClick, 0.4);
 
   useEffect(() => {
     setMusic(music);
@@ -27,16 +23,6 @@ export default function Credits({ muted, toggleSound, setMusic }) {
       <CreditsBackground />
       <button className="back-button" onClick={() => navigate("/")}>
         ←
-      </button>
-
-      <button
-        className="sound-button"
-        onClick={() => {
-          toggleSound();
-          playLightClick();
-        }}
-      >
-        <img src={muted ? noSoundIcon : soundIcon} alt="sound toggle" />
       </button>
     </div>
   );

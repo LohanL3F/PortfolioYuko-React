@@ -9,40 +9,24 @@ import noSoundIcon from "../assets/Images/Nosound.png";
 import Workshop from "../assets/Images/PopWorkshop.gif";
 import About from "../assets/Images/PopAbout.gif";
 import Credits from "../assets/Images/PopCredits.gif";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import lightClick from "../assets/Musiques/lightClick.mp3";
 import "../App.css";
 import FilterBlue from "../assets/Images/filterBlue.png";
 import FilterYellow from "../assets/Images/filterYellow.png";
+import { playSfx } from "../utils/playSfx";
 
-export default function Accueil({
-  filterEnabled,
-  toggleFilter,
-  muted,
-  toggleSound,
-  setMusic,
-}) {
+export default function Accueil() {
+  const { filterEnabled, toggleFilter, muted, toggleSound, setMusic } = useOutletContext();
   const [transitioning, setTransitioning] = useState(false);
   const navigate = useNavigate();
 
-  const playHoverSound = () => {
-    const audio = new Audio(hoverSound);
-    audio.volume = 0.3;
-    audio.play().catch(() => {});
-  };
+  const playHoverSound = () => playSfx(hoverSound, 0.3);
 
-  const playClickSound = () => {
-    const audio = new Audio(clickSound);
-    audio.volume = 0.4;
-    audio.play().catch(() => {});
-  };
+  const playClickSound = () => playSfx(clickSound, 0.4);
 
-  const playLightClick = () => {
-    const audio = new Audio(lightClick);
-    audio.volume = 0.4;
-    audio.play().catch(() => {});
-  };
-
+  const playLightClick = () => playSfx(lightClick, 0.4);
+  
   useEffect(() => {
     setMusic(music);
   }, []);
@@ -75,16 +59,6 @@ export default function Accueil({
       <div className={`transition-overlay ${transitioning ? "active" : ""}`} />
 
       <Background filterEnabled={filterEnabled} />
-
-      <button
-        className="sound-button"
-        onClick={() => {
-          toggleSound();
-          playLightClick();
-        }}
-      >
-        <img src={muted ? noSoundIcon : soundIcon} alt="sound toggle" />
-      </button>
 
       <div className="NavTab">
         <NavButton

@@ -5,22 +5,30 @@ const WorkshopBackground = ({ canvasIndex }) => {
   const bgRef = useRef(null);
   const showFilter = isFilterEnabled();
 
-  const getZIndex = (id) => {
-    if (canvasIndex === 0) {
-      if (id === "WorkshopCANVA") return -6;
-      if (id === "WorkshopCANVA2") return -7;
-      if (id === "WorkshopCANVA3") return -8;
-    } else if (canvasIndex === 1) {
-      if (id === "WorkshopCANVA") return -7;
-      if (id === "WorkshopCANVA2") return -6;
-      if (id === "WorkshopCANVA3") return -7;
-    } else if (canvasIndex === 2) {
-      if (id === "WorkshopCANVA") return -8;
-      if (id === "WorkshopCANVA2") return -7;
-      if (id === "WorkshopCANVA3") return -6;
-    }
-    return -7;
-  };
+const getZIndex = (id) => {
+  if (canvasIndex === 0) {
+    if (id === "WorkshopCANVA") return -6;
+    if (id === "WorkshopCANVA2") return -7;
+    if (id === "WorkshopCANVA3") return -8;
+    if (id === "WorkshopCANVA4") return -9;
+  } else if (canvasIndex === 1) {
+    if (id === "WorkshopCANVA") return -7;
+    if (id === "WorkshopCANVA2") return -6;
+    if (id === "WorkshopCANVA3") return -7;
+    if (id === "WorkshopCANVA4") return -8;
+  } else if (canvasIndex === 2) {
+    if (id === "WorkshopCANVA") return -8;
+    if (id === "WorkshopCANVA2") return -7;
+    if (id === "WorkshopCANVA3") return -6;
+    if (id === "WorkshopCANVA4") return -7;
+  } else if (canvasIndex === 3) {
+    if (id === "WorkshopCANVA") return -9;
+    if (id === "WorkshopCANVA2") return -8;
+    if (id === "WorkshopCANVA3") return -7;
+    if (id === "WorkshopCANVA4") return -6;
+  }
+  return -7;
+};
 
   // Parallax
   useEffect(() => {
@@ -100,6 +108,14 @@ const WorkshopBackground = ({ canvasIndex }) => {
           style={{
             zIndex: getZIndex("WorkshopCANVA3"),
             transform: `translateX(${(-canvasIndex + 2) * 100}vw)`,
+          }}
+        />
+        <div
+          id="WorkshopCANVA4"
+          className="canvas"
+          style={{
+            zIndex: getZIndex("WorkshopCANVA4"),
+            transform: `translateX(${(-canvasIndex + 3) * 100}vw)`,
           }}
         />
       </div>

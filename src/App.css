@@ -170,6 +170,22 @@ body {
   height: 32px;
 }
 
+.sfx-button {
+  position: absolute;
+  top: 20px;
+  right: 70px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.sfx-button img {
+  width: 32px;
+  height: 32px;
+}
+
 .NavTab {
   position: fixed;
   top: 0;
@@ -355,7 +371,7 @@ body {
   position: absolute;
   top: 15px;
   font-size: 30px;
-  right: 70px;
+  right: 120px;
   background: none;
   border: none;
   cursor: pointer;
