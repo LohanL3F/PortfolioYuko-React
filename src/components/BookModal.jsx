@@ -9,14 +9,27 @@ import closeBook from "../assets/Musiques/closeBook.mp3";
 export default function BookModal({ isOpen, onClose, pages, imagesPerPage }) {
   const [pageIndex, setPageIndex] = useState(0);
 
+  const [prevPerPage, setPrevPerPage] = useState(imagesPerPage);
+
+  if (prevPerPage !== imagesPerPage) {
+    setPrevPerPage(imagesPerPage);
+    setPageIndex(Math.floor((pageIndex * prevPerPage) / imagesPerPage));
+  }
+
+  const safeIndex = Math.min(pageIndex, pages.length - 1);
+
   useEffect(() => {
     const videos = document.querySelectorAll("video");
     videos.forEach((v) => v.pause());
-  }, [pageIndex, isOpen]);
+  }, [safeIndex, isOpen]);
 
   const playPageSwitch = () => playSfx(paperSwitch, 0.5);
   const playPickUp = () => playSfx(pickUp, 0.5);
   const playCloseBook = () => playSfx(closeBook, 0.5);
+
+  useEffect(() => {
+  if (isOpen) setPageIndex(0);
+}, [isOpen]);
 
   if (!isOpen || !pages || pages.length === 0) return null;
 

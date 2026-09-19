@@ -17,6 +17,15 @@ import { drawings, sketches, animations, timelapses } from "../utils/loadAssets"
 // MUSIC :
 import music from "../assets/Musiques/9am.mp3";
 
+const STORAGE_KEY = "atelier-images-per-page";
+const getInitialImagesPerPage = () => {
+  try {
+    return localStorage.getItem(STORAGE_KEY) === "4" ? 4 : 2;
+  } catch {
+    return 2;
+  }
+};
+
 export default function Atelier() {
   const { muted, toggleSound, sfxMuted, toggleSfx, setMusic, pauseMusic, resumeMusic } =
     useOutletContext();
@@ -25,19 +34,25 @@ export default function Atelier() {
   // Image closeup
   const [zoomImage, setZoomImage] = useState(null);
   const [fullscreenVideo, setFullscreenVideo] = useState(null);
-  const [imagesPerPage, setImagesPerPage] = useState(4);
+  const [imagesPerPage, setImagesPerPage] = useState(getInitialImagesPerPage);
 
   const toggleImagesPerPage = () => {
-  setImagesPerPage((prev) => (prev === 4 ? 2 : 4));
+  setImagesPerPage((prev) => (prev === 2 ? 4 : 2));
   };
 
-useEffect(() => {
-  if (fullscreenVideo) {
-    pauseMusic();
-  } else {
-    resumeMusic();
-  }
-}, [fullscreenVideo]);
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, String(imagesPerPage));
+    } catch {}
+  }, [imagesPerPage]);
+
+  useEffect(() => {
+    if (fullscreenVideo) {
+      pauseMusic();
+    } else {
+      resumeMusic();
+    }
+  }, [fullscreenVideo]);
 
 const pickUpSound = () => playSfx(pickUp, 0.5);
 
@@ -122,7 +137,7 @@ const CANVAS_COUNT = booksByCanvas.length;
         className="pages-toggle-button"
         onClick={toggleImagesPerPage}
       >
-        {imagesPerPage === 4 ? "4" : "2"}
+        {imagesPerPage === 2 ? "2" : "4"}
       </button>
       <button className="left-button" onClick={prevCanvas}>
         ◀
@@ -143,7 +158,7 @@ const CANVAS_COUNT = booksByCanvas.length;
       </button>
 
       <BookModal
-        key={`${canvasIndex}-${imagesPerPage}`}
+        key={canvasIndex}
         isOpen={bookOpen}
         onClose={() => setBookOpen(false)}
         pages={booksByCanvas[canvasIndex]}
