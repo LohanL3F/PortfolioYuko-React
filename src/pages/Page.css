@@ -304,19 +304,47 @@ body {
   height: 100%;
   background-image: url(../assets/Images/ProfileBG.png);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   position: absolute;
   z-index: -10;
 }
 
-#ProfileBoard {
+#ProfileBoard,
+#ProfileContent {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../assets/Images/ProfileBoard.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
+}
+
+#ProfileBoard {
   z-index: -9;
+}
+
+#ProfileContent {
+  z-index: 9000;
+  pointer-events: none;
+}
+
+#ProfileContent .stage {
+  pointer-events: none;
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  margin-left: -970px;
+  margin-top: -465px;
+  transform-origin: 970px 465px;
+  transform: scale(var(--stage-scale, 1));
+}
+
+.stage-board {
+  background: url(../assets/Images/ProfileBoard.png) center / 100% 100% no-repeat;
 }
 
 #ProfileLIGHT1 {
@@ -324,6 +352,7 @@ body {
   height: 100%;
   background-image: url(../assets/Images/ProfileLIGHT1.png);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   position: absolute;
   z-index: -6;
@@ -338,6 +367,7 @@ body {
   height: 100%;
   background-image: url(../assets/Images/ProfileLIGHT2.png);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   position: absolute;
   z-index: -5;
@@ -347,10 +377,6 @@ body {
   pointer-events: none;
 }
 
-#ProfileLIGHT1,
-#ProfileLIGHT2,
-#RoomFILTER,
-#CreditsHIDE,
 #RoomPARTICLES {
   pointer-events: none;
 }
@@ -365,49 +391,74 @@ body {
 }
 
 #BoardContent {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
   position: absolute;
-  z-index: -7;
-  width: 70%;
-  height: 70%;
+  left: 310px;
+  top: 140px;
+  width: 1320px;
+  height: 710px;
+  padding: 20px 30px;
   color: #251614;
-  top: 6.8%;
-  left: 15%;
-  padding: 50px;
+  line-height: normal;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 #BoardContent h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: calc(36px * var(--boost, 1));
+  margin: 0 0 20px;
   text-align: center;
 }
 
 #BoardContent p {
-  font-size: 24px;
-  line-height: 1.5;
+  font-size: calc(24px * var(--boost, 1));
+  line-height: 1.4;
+  margin: 0 0 16px;
 }
 
-.near-picture {
-  position: relative;
-  left: 10%;
-  margin: 0 auto;
-  max-width: 1000px;
+#BoardContent .near-picture {
+  margin-left: 270px;
+}
+
+#ProfileContent[data-compact="true"] #BoardContent > * {
+  margin-left: 270px;
+}
+
+#SkillsBoard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+#SkillsBoard p {
+  font-size: calc(1.1rem * var(--boost, 1));
+  margin: 0;
+  background-color: #68573898;
+  color: #422522;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 #SocialsLinks {
   display: flex;
-  justify-content: start;
+  flex-wrap: wrap;
   gap: 40px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #SocialsLinks a {
-  text-decoration: none;
-  font-size: 24px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: calc(24px * var(--boost, 1));
   color: inherit;
+  text-decoration: none;
   transition: all 0.1s ease-in-out;
 }
 
@@ -415,23 +466,6 @@ body {
   font-weight: bold;
 }
 
-#SkillsBoard {
-  display: flex;
-  justify-content: start;
-  gap: 10px;
-  height: auto;
-  margin: 0;
-  padding: 0;
-}
-
-#SkillsBoard p {
-  background-color: #68573898;
-  color: #422522;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  margin: 0;
-}
 
 .back-button {
   position: absolute;
@@ -526,7 +560,7 @@ body {
   pointer-events: none;
 }
 
-/* Pour les trois CANVA */
+/* Canvas */
 #WorkshopCANVA {
   background-image: url(../assets/Images/WorkshopCANVA.png);
 }
@@ -614,46 +648,7 @@ body {
   box-shadow: 5px 5px rgba(214, 123, 100, 0.5);
 }
 
-/* Mobile - responsive scaling */
 @media (max-width: 1000px) {
-  #BoardContent {
-    transform: scale(0.5);
-    transform-origin: top left;
-    top: 5%;
-    left: 12%;
-    width: auto;
-    height: auto;
-    max-width: 80%;
-    box-sizing: border-box;
-    line-height: 0;
-  }
-
-  #BoardContent h1 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-
-  #BoardContent p,
-  #SkillsBoard p,
-  #SocialsLinks a {
-    font-size: 12px;
-  }
-
-  .near-picture {
-    left: 6%;
-    max-width: 75%;
-  }
-
-  #SkillsBoard {
-    gap: 2px;
-    flex-wrap: wrap;
-  }
-
-  #SocialsLinks {
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
   .see-button {
     font-size: 20px;
     width: 120px;
@@ -679,76 +674,9 @@ body {
     padding: 20px;
     pointer-events: none;
     font-size: 10px;
-
-    #CreditsContent {
-      color: #422522;
-      font-size: 12px;
-      text-align: left;
-      padding: 20px;
-      border-radius: 10px;
-      position: relative;
-      z-index: 5;
-      pointer-events: auto;
-    }
-
-    #CreditsContent a {
-      color: #422522;
-      text-decoration: none;
-      transition: all 0.2s ease-in-out;
-    }
-
-    #CreditsContent a:hover {
-      font-weight: bold;
-    }
-  }
-}
-
-@media (max-width: 700px) {
-  #BoardContent {
-    transform: scale(0.5);
-    transform-origin: top left;
-    top: 2%;
-    left: 13%;
-    width: auto;
-    height: auto;
-    max-width: 95%;
-    box-sizing: border-box;
-    line-height: 0;
   }
 
-  #BoardContent h1 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-
-  #BoardContent p,
-  #SkillsBoard p,
-  #SocialsLinks a {
-    font-size: 10px;
-  }
-
-  .near-picture {
-    left: 6%;
-    max-width: 75%;
-  }
-
-  #SkillsBoard {
-    gap: 2px;
-    flex-wrap: wrap;
-  }
-
-  #SocialsLinks {
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .see-button {
-    font-size: 20px;
-    width: 120px;
-    padding: 8px 15px;
-  }
-
-  .back-button {
-    font-size: 32px;
+  #CreditsContent {
+    font-size: 12px;
   }
 }
