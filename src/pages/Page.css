@@ -147,7 +147,7 @@ body {
   background-repeat: no-repeat;
   position: absolute;
   z-index: -6;
-  opacity: 0.6;
+  opacity: 1;
   mix-blend-mode: multiply;
   pointer-events: none;
 }
@@ -262,34 +262,46 @@ body {
   pointer-events: none;
 }
 
-#CreditsPAPER {
-  width: 1000px;
-  height: 630px;
+#CreditsPAPER,
+#CreditsPaperText {
   position: absolute;
-  top: 150px;
-  left: 400px;
-  z-index: -9;
-  transform-style: preserve-3d;
+  inset: 0;
+  margin: auto;
+  width: min(1200px, 92vw);
+  height: min(830px, 85vh);
   transform: perspective(1000px) rotateY(-5deg) rotateZ(3deg);
+}
+
+#CreditsPAPER {
+  z-index: -9;
   background-image: url(../assets/Images/CreditsPAPER.png);
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  padding: 20px;
+}
+
+#CreditsPaperText {
+  z-index: 100;
+  padding: clamp(12px, 3vw, 40px);
   pointer-events: none;
 }
 
 #CreditsContent {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
   color: #422522;
-  font-size: 24px;
+  font-size: clamp(14px, 2.2vw, 24px);
   text-align: left;
-  padding: 20px;
-  border-radius: 10px;
-  position: relative;
-  z-index: 5;
   pointer-events: auto;
 }
 
+#CreditsContent p {
+  margin: 0 0 0.6em;
+}
+
 #CreditsContent a {
+  display: block;
+  margin-bottom: 8px;
   color: #422522;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -344,7 +356,8 @@ body {
 }
 
 .stage-board {
-  background: url(../assets/Images/ProfileBoard.png) center / 100% 100% no-repeat;
+  background: url(../assets/Images/ProfileBoard.png) center / 100% 100%
+    no-repeat;
 }
 
 #ProfileLIGHT1 {
@@ -372,7 +385,7 @@ body {
   position: absolute;
   z-index: -5;
   mix-blend-mode: color-dodge;
-  opacity: 0.4;
+  opacity: 1;
   filter: brightness(0.8) saturate(1);
   pointer-events: none;
 }
@@ -437,8 +450,7 @@ body {
 #SkillsBoard p {
   font-size: calc(1.1rem * var(--boost, 1));
   margin: 0;
-  background-color: #68573898;
-  color: #422522;
+  background-color: #6447102b;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -465,7 +477,6 @@ body {
 #SocialsLinks a:hover {
   font-weight: bold;
 }
-
 
 .back-button {
   position: absolute;
@@ -659,24 +670,7 @@ body {
     font-size: 32px;
   }
 
-  #CreditsPAPER {
-    width: 50%;
-    height: 75%;
-    position: absolute;
-    top: 15%;
-    left: 25%;
-    z-index: -9;
-    transform-style: preserve-3d;
-    transform: perspective(1000px) rotateY(-5deg) rotateZ(3deg);
-    background-image: url(../assets/Images/CreditsPAPER.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    padding: 20px;
-    pointer-events: none;
-    font-size: 10px;
-  }
-
   #CreditsContent {
-    font-size: 12px;
+    font-size: auto;
   }
 }
