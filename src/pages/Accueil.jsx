@@ -19,7 +19,10 @@ import { playSfx } from "../utils/playSfx";
 export default function Accueil() {
   const { filterEnabled, toggleFilter, muted, toggleSound, setMusic } = useOutletContext();
   const [transitioning, setTransitioning] = useState(false);
-  
+  const [selected, setSelected] = useState(-1);
+  const [keysOpen, setKeysOpen] = useState(false);
+  const routes = ["/atelier", "/profil", "/credits"];
+
   const navigate = useNavigate();
 
   const playHoverSound = () => playSfx(hoverSound, 0.3);
@@ -32,6 +35,33 @@ export default function Accueil() {
     setMusic(music);
   }, []);
 
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (transitioning || e.ctrlKey || e.metaKey || e.altKey) return;
+
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelected((s) => (s + 1) % routes.length);
+        playHoverSound();
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        setSelected((s) => (s <= 0 ? routes.length - 1 : s - 1));
+        playHoverSound();
+      } else if (e.key === "Enter" && selected >= 0) {
+        playClickSound();
+        handleNavClick(routes[selected]);
+      } else if (e.key.toLowerCase() === "h") {
+        if (e.repeat) return;
+        setKeysOpen((o) => !o);
+        playLightClick();
+      } else if (e.key === "Escape" && keysOpen) {
+        setKeysOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  });
+
   // Plays the transition when you click on a nav button
   const handleNavClick = (path) => {
     setTransitioning(true);
@@ -43,6 +73,22 @@ export default function Accueil() {
 
   return (
     <div className="app">
+
+      <div id="KeysInfos" className={keysOpen ? "open" : ""}>
+        <div id="InfosContent">
+          <ul>
+            <h2>Touches raccourci :</h2>
+            <li><p><strong>ESC</strong> : Retour arrière</p></li>
+            <li><p><strong>X</strong> : Changer le filtre</p></li>
+            <li><p><strong>M</strong> : Activer/Désactiver musique</p></li>
+            <li><p><strong>S</strong> : Activer/Désactiver les SFX</p></li>
+            <li><p><strong>L</strong> : Changer le mode d'affichage (Atelier)</p></li>
+            <li><p><strong>← ↑ ↓ →</strong> : Naviguer</p></li>
+            <li><p><strong>Entrée</strong> : Valider</p></li>
+          </ul>
+        </div>
+      </div>
+
       <button
         onClick={() => {
           toggleFilter();
@@ -63,8 +109,7 @@ export default function Accueil() {
       <Background filterEnabled={filterEnabled} />
 
       <div className="NavTab">
-        <NavButton
-          className="First"
+        <NavButton className={`First ${selected === 0 ? "selected" : ""}`}
           onMouseEnter={playHoverSound}
           onClick={() => {
             playClickSound();
@@ -75,8 +120,7 @@ export default function Accueil() {
           <img src={Workshop} className="NavIcon" alt="Atelier" />
         </NavButton>
 
-        <NavButton
-          className="Second"
+        <NavButton className={`Second ${selected === 1 ? "selected" : ""}`}
           onMouseEnter={playHoverSound}
           onClick={() => {
             playClickSound();
@@ -87,8 +131,7 @@ export default function Accueil() {
           <img src={About} className="NavIcon" alt="Profil" />
         </NavButton>
 
-        <NavButton
-          className="Third"
+        <NavButton className={`Third ${selected === 2 ? "selected" : ""}`}
           onMouseEnter={playHoverSound}
           onClick={() => {
             playClickSound();

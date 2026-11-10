@@ -19,6 +19,15 @@ export default function Credits() {
     setMusic(music);
   }, []);
 
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "Escape") navigate("/");
+    };
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
+  }, [navigate]);
+
   return (
     <div className="page">
       <CreditsBackground />

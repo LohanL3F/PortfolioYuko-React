@@ -4,7 +4,7 @@ import { playSfx } from "../utils/playSfx";
 import paperSwitch from "../assets/Musiques/pageswitch.mp3";
 import closeBook from "../assets/Musiques/closeBook.mp3";
 
-export default function BookModal({ isOpen, onClose, pages, imagesPerPage }) {
+export default function BookModal({ isOpen, onClose, pages, imagesPerPage, disableKeys }) {
   const [pageIndex, setPageIndex] = useState(0);
   const prevPerPageRef = useRef(imagesPerPage);
 
@@ -26,6 +26,27 @@ export default function BookModal({ isOpen, onClose, pages, imagesPerPage }) {
   useEffect(() => {
     document.querySelectorAll("video").forEach((v) => v.pause());
   }, [safeIndex, isOpen]);
+
+  useEffect(() => {
+    if (!isOpen || disableKeys || !pages?.length) return;
+    const len = pages.length;
+
+    const onKeyDown = (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "ArrowRight") {
+        playSfx(paperSwitch, 0.5);
+        setPageIndex((p) => (Math.min(p, len - 1) + 1) % len);
+      } else if (e.key === "ArrowLeft") {
+        playSfx(paperSwitch, 0.5);
+        setPageIndex((p) => (Math.min(p, len - 1) - 1 + len) % len);
+      } else if (e.key === "Escape" || e.key === "ArrowUp") {
+        playSfx(closeBook, 0.5);
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, disableKeys, pages, onClose]);
 
   const playPageSwitch = () => playSfx(paperSwitch, 0.5);
   const playCloseBook = () => playSfx(closeBook, 0.5);

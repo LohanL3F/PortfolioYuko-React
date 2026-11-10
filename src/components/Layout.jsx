@@ -6,6 +6,7 @@ import soundEffectMuteIcon from "../assets/Images/soundeffectmute.png";
 import lightClick from "../assets/Musiques/lightClick.mp3";
 import { playSfx } from "../utils/playSfx";
 import "../pages/Page.css";
+import { useEffect } from "react";
 
 export default function Layout({
   muted,
@@ -19,6 +20,31 @@ export default function Layout({
   resumeMusic,
 }) {
   const playLightClick = () => playSfx(lightClick, 0.4);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = e.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || e.target.isContentEditable) return;
+
+      switch (e.key.toLowerCase()) {
+        case "x":
+          toggleFilter();
+          playLightClick();
+          break;
+        case "m":
+          toggleSound();
+          playLightClick();
+          break;
+        case "s":
+          toggleSfx();
+          playLightClick();
+          break;
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [toggleFilter, toggleSound, toggleSfx, sfxMuted]);
 
   return (
     <>
