@@ -1,41 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./BookModal.css";
-import bookModal from "../assets/Images/WorkShopBookModal.png";
 import { playSfx } from "../utils/playSfx";
 import paperSwitch from "../assets/Musiques/pageswitch.mp3";
-import pickUp from "../assets/Musiques/paper.mp3";
 import closeBook from "../assets/Musiques/closeBook.mp3";
 
-export default function BookModal({ isOpen, onClose, pages, imagesPerPage }) {
+export default function BookModal({ isOpen, onClose, pages, imagesPerPage, disableKeys }) {
   const [pageIndex, setPageIndex] = useState(0);
-
-  const [prevPerPage, setPrevPerPage] = useState(imagesPerPage);
-
-  if (prevPerPage !== imagesPerPage) {
-    setPrevPerPage(imagesPerPage);
-    setPageIndex(Math.floor((pageIndex * prevPerPage) / imagesPerPage));
-  }
-
-  const safeIndex = Math.min(pageIndex, pages.length - 1);
+  const prevPerPageRef = useRef(imagesPerPage);
 
   useEffect(() => {
-    const videos = document.querySelectorAll("video");
-    videos.forEach((v) => v.pause());
+    if (prevPerPageRef.current !== imagesPerPage) {
+      setPageIndex((prev) =>
+        Math.floor((prev * prevPerPageRef.current) / imagesPerPage)
+      );
+      prevPerPageRef.current = imagesPerPage;
+    }
+  }, [imagesPerPage]);
+
+  useEffect(() => {
+    if (isOpen) setPageIndex(0);
+  }, [isOpen]);
+
+  const safeIndex = Math.max(0, Math.min(pageIndex, (pages?.length ?? 1) - 1));
+
+  useEffect(() => {
+    document.querySelectorAll("video").forEach((v) => v.pause());
   }, [safeIndex, isOpen]);
 
-  const playPageSwitch = () => playSfx(paperSwitch, 0.5);
-  const playPickUp = () => playSfx(pickUp, 0.5);
-  const playCloseBook = () => playSfx(closeBook, 0.5);
-
   useEffect(() => {
-  if (isOpen) setPageIndex(0);
-}, [isOpen]);
+    if (!isOpen || disableKeys || !pages?.length) return;
+    const len = pages.length;
+
+    const onKeyDown = (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "ArrowRight") {
+        playSfx(paperSwitch, 0.5);
+        setPageIndex((p) => (Math.min(p, len - 1) + 1) % len);
+      } else if (e.key === "ArrowLeft") {
+        playSfx(paperSwitch, 0.5);
+        setPageIndex((p) => (Math.min(p, len - 1) - 1 + len) % len);
+      } else if (e.key === "Escape" || e.key === "ArrowUp") {
+        playSfx(closeBook, 0.5);
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, disableKeys, pages, onClose]);
+
+  const playPageSwitch = () => playSfx(paperSwitch, 0.5);
+  const playCloseBook = () => playSfx(closeBook, 0.5);
 
   if (!isOpen || !pages || pages.length === 0) return null;
 
-  const nextPage = () => setPageIndex((prev) => (prev + 1) % pages.length);
+  const nextPage = () => setPageIndex(() => (safeIndex + 1) % pages.length);
   const prevPage = () =>
-    setPageIndex((prev) => (prev - 1 + pages.length) % pages.length);
+    setPageIndex(() => (safeIndex - 1 + pages.length) % pages.length);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -52,8 +72,8 @@ export default function BookModal({ isOpen, onClose, pages, imagesPerPage }) {
           </button>
 
           <div className={`book-page book-page--${imagesPerPage}`}>
-            {pages[pageIndex].map((img, idx) => (
-              <div className="page-slot" key={`${pageIndex}-${idx}`}>
+            {pages[safeIndex].map((img, idx) => (
+              <div className="page-slot" key={`${safeIndex}-${idx}`}>
                 {img}
               </div>
             ))}
@@ -70,7 +90,7 @@ export default function BookModal({ isOpen, onClose, pages, imagesPerPage }) {
               ◀
             </button>
             <span id="pageNum">
-              {pageIndex + 1} / {pages.length}
+              {safeIndex + 1} / {pages.length}
             </span>
             <button
               className="ArrowBTN"

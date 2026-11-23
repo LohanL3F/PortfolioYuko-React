@@ -202,6 +202,42 @@ body {
   z-index: 100;
 }
 
+#KeysInfos{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url("assets/Images/InfoBubble.png");
+  background-position: center;
+  background-size: cover;
+  bottom: 10px;
+  left: 10px;
+}
+
+#InfosContent{
+  position: absolute;
+  width: 400px;
+  height: 340px;
+  background-color: rgb(223, 186, 155);
+  bottom: 65px;
+  left: -150px;
+  border: 3px solid #3a2623;
+  border-radius: 15px;
+  visibility: hidden;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+}
+
+#InfosContent li {
+  list-style-type: none;
+}
+
+#KeysInfos:hover #InfosContent,
+#KeysInfos.open #InfosContent {
+  visibility: visible;
+  transform: scale(1);
+  left: 10px;
+}
+
 .NavTab a {
   text-decoration: none;
 }
@@ -233,6 +269,36 @@ body {
 
 .NavButton:hover {
   color: #d67b64;
+}
+
+/* Sélection au clavier */
+.NavButton.selected {
+  color: #d67b64;
+}
+
+.First.selected {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(-11deg)
+    translateX(-20px);
+  box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
+  margin-right: 50px;
+}
+
+.Second.selected {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(3deg) translateX(-20px);
+  box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
+  margin-right: 50px;
+}
+
+.Third.selected {
+  transform: perspective(1000px) rotateY(-30deg) rotateZ(11deg)
+    translateX(-20px);
+  box-shadow: 20px 10px rgba(214, 123, 100, 0.5);
+  margin-right: 50px;
+}
+
+.NavButton.selected .NavIcon {
+  opacity: 1;
+  transform: rotate(-15deg) scale(1);
 }
 
 /* effet 3D permanent */
@@ -364,6 +430,10 @@ body {
     height: 80px;
     top: -30px;
     left: -80px;
+  }
+
+  #KeysInfos {
+    display: none;
   }
 }
 

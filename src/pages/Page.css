@@ -332,6 +332,7 @@ body {
 
 #ProfileBoard {
   z-index: -9;
+  filter:brightness(1.2);
 }
 
 #ProfileContent {

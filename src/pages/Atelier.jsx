@@ -126,6 +126,48 @@ const CANVAS_COUNT = booksByCanvas.length;
 
   const playLightClick = () => playSfx(lightClick, 0.4);
 
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+      if (zoomImage || fullscreenVideo) {
+        if (e.key === "Escape") {
+          setZoomImage(null);
+          setFullscreenVideo(null);
+        }
+        return;
+      }
+
+      if (e.key.toLowerCase() === "l") {
+        if (e.repeat) return;
+        toggleImagesPerPage();
+        playLightClick();
+        return;
+      }
+
+      if (bookOpen) return;
+
+      switch (e.key) {
+        case "ArrowLeft":
+          prevCanvas();
+          break;
+        case "ArrowRight":
+          nextCanvas();
+          break;
+        case "ArrowDown":
+        case "Enter":
+          setBookOpen(true);
+          seeBtn();
+          break;
+        case "Escape":
+          navigate("/");
+          break;
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  });
+
   return (
     <div className="page">
       <WorkshopBackground canvasIndex={canvasIndex} />
@@ -163,6 +205,7 @@ const CANVAS_COUNT = booksByCanvas.length;
         onClose={() => setBookOpen(false)}
         pages={booksByCanvas[canvasIndex]}
         imagesPerPage={imagesPerPage}
+        disableKeys={!!zoomImage || !!fullscreenVideo}
       />
 
       {zoomImage && (
